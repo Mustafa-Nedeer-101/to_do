@@ -31,14 +31,14 @@ class ToDoApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: "To-Do App",
-      debugShowCheckedModeBanner: false,
-      theme: AppTheme.lightTheme,
-      darkTheme: AppTheme.darkTheme,
-      home: BlocProvider(
-        create: (context) => NotesCubit(repository: repository),
-        child: HomePage(),
+    return BlocProvider(
+      create: (context) => NotesCubit(repository: repository)..loadNotes(),
+      child: MaterialApp(
+        title: "Notes App",
+        debugShowCheckedModeBanner: false,
+        theme: AppTheme.lightTheme,
+        darkTheme: AppTheme.darkTheme,
+        home: NotesScreen(),
       ),
     );
   }
